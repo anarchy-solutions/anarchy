@@ -1,3 +1,290 @@
+
+local AnarchyUI = Instance.new("ScreenGui")
+AnarchyUI.Name = "AnarchyUI"
+AnarchyUI.Parent = game.CoreGui
+AnarchyUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+local Blur = Instance.new("BlurEffect")
+Blur.Name = "AnarchyUIBlur"
+Blur.Size = 0
+Blur.Parent = game.Lighting
+
+local function tweenGui(uiObject, properties, duration)
+    local tweenInfo = TweenInfo.new(duration or 1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+    local tween = game:GetService("TweenService"):Create(uiObject, tweenInfo, properties)
+    tween:Play()
+    return tween
+end
+
+local Title = Instance.new("TextLabel")
+Title.Name = "Title"
+Title.Parent = AnarchyUI
+Title.Size = UDim2.new(0, 200, 0, 50)
+Title.Position = UDim2.new(0.5, -100, 0.5, -25)
+Title.AnchorPoint = Vector2.new(0.5, 0.5)
+Title.BackgroundTransparency = 1
+Title.Text = "Anarchy"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.Font = Enum.Font.SourceSansBold
+
+local ccLabel = Instance.new("TextLabel")
+ccLabel.Name = "CCLabel"
+ccLabel.Parent = Title
+ccLabel.Size = UDim2.new(0, 30, 0, 80)
+ccLabel.Position = UDim2.new(1, 0, 0, 0)
+ccLabel.AnchorPoint = Vector2.new(0, 0)
+ccLabel.BackgroundTransparency = 1
+ccLabel.Text = ".CC"
+ccLabel.TextColor3 = Color3.fromRGB(128, 0, 128)
+ccLabel.TextScaled = true
+ccLabel.Font = Enum.Font.SourceSansBold
+
+local Subtext = Instance.new("TextLabel")
+Subtext.Name = "Subtext"
+Subtext.Parent = Title
+Subtext.Size = UDim2.new(0, 300, 0, 20)
+Subtext.Position = UDim2.new(0.5, 0, 0.5, 25)
+Subtext.AnchorPoint = Vector2.new(0.5, 0)
+Subtext.BackgroundTransparency = 1
+Subtext.Text = "The future of HvH in Roblox."
+Subtext.TextColor3 = Color3.fromRGB(255, 255, 255)
+Subtext.TextScaled = true
+Subtext.Font = Enum.Font.SourceSans
+
+local function showUI()
+    tweenGui(Title, { TextTransparency = 0 }, 0.5)
+    tweenGui(ccLabel, { TextTransparency = 0 }, 0.5)
+    tweenGui(Subtext, { TextTransparency = 0 }, 0.5)
+    tweenGui(Blur, { Size = 20 }, 0.5)
+
+    wait(5)
+
+    local fadeOutTween1 = tweenGui(Title, { TextTransparency = 1 }, 0.5)
+    tweenGui(ccLabel, { TextTransparency = 1 }, 0.5)
+    tweenGui(Subtext, { TextTransparency = 1 }, 0.5)
+    tweenGui(Blur, { Size = 0 }, 0.5)
+
+    fadeOutTween1.Completed:Connect(function()
+        AnarchyUI:Destroy()
+        loadBlazedLoader()
+    end)
+end
+
+showUI()
+
+
+function loadBlazedLoader()
+    local gui = {
+        blazedLoader = Instance.new("ScreenGui"),
+        Frame = Instance.new("Frame"),
+        UICorner = Instance.new("UICorner"),
+        TextLabel = Instance.new("TextLabel"),
+        TextLabel_1 = Instance.new("TextLabel"),
+        signin_load = Instance.new("TextButton"),
+        UICorner_1 = Instance.new("UICorner"),
+        UIStroke = Instance.new("UIStroke"),
+        TextLabel_2 = Instance.new("TextLabel"),
+        fps_checkbox = Instance.new("Frame"),
+        UICorner_2 = Instance.new("UICorner"),
+        UICorner_3 = Instance.new("UICorner"),
+        UIStroke_1 = Instance.new("UIStroke"),
+        ImageLabel = Instance.new("ImageLabel"),
+        fpscheckbox_button = Instance.new("TextButton"),
+        TextLabel_3 = Instance.new("TextLabel"),
+        UICorner_4 = Instance.new("UICorner"),
+        UIStroke_2 = Instance.new("UIStroke"),
+        UIStroke_3 = Instance.new("UIStroke"),
+    }
+
+    gui.blazedLoader.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    gui.blazedLoader.Name = "blazedLoader"
+    gui.blazedLoader.Parent = game:GetService("CoreGui")
+
+    gui.Frame.BorderSizePixel = 0
+    gui.Frame.Size = UDim2.new(0, 396, 0, 249)
+    gui.Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    gui.Frame.Name = "Frame"
+    gui.Frame.Position = UDim2.new(0.396226, 0, 0.362031, 0)
+    gui.Frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+    gui.Frame.Parent = gui.blazedLoader
+
+    gui.UICorner.Name = "UICorner"
+    gui.UICorner.CornerRadius = UDim.new(0, 12)
+    gui.UICorner.Parent = gui.Frame
+
+    gui.TextLabel.BorderSizePixel = 0
+    gui.TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    gui.TextLabel.FontFace = Font.new("rbxassetid://11702779517", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    gui.TextLabel.TextSize = 27
+    gui.TextLabel.Position = UDim2.new(0.244949, 0, 0.11245, 0)
+    gui.TextLabel.Size = UDim2.new(0, 147, 0, 50)
+    gui.TextLabel.Name = "TextLabel"
+    gui.TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    gui.TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    gui.TextLabel.Text = "Anarchy"
+    gui.TextLabel.BackgroundTransparency = 1
+    gui.TextLabel.Parent = gui.Frame
+
+    gui.TextLabel_1.BorderSizePixel = 0
+    gui.TextLabel_1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    gui.TextLabel_1.FontFace = Font.new("rbxassetid://11702779517", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    gui.TextLabel_1.TextSize = 17
+    gui.TextLabel_1.Position = UDim2.new(0.479798, 0, 0.11245, 0)
+    gui.TextLabel_1.Size = UDim2.new(0, 106, 0, 57)
+    gui.TextLabel_1.Name = "TextLabel"
+    gui.TextLabel_1.TextColor3 = Color3.fromRGB(240, 32, 160)
+    gui.TextLabel_1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    gui.TextLabel_1.Text = "v1.4"
+    gui.TextLabel_1.BackgroundTransparency = 1
+    gui.TextLabel_1.Parent = gui.Frame
+
+    gui.signin_load.BorderSizePixel = 0
+    gui.signin_load.BackgroundColor3 = Color3.fromRGB(240, 32, 160)
+    gui.signin_load.FontFace = Font.new("rbxassetid://11702779517", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    gui.signin_load.TextColor3 = Color3.fromRGB(255, 255, 255)
+    gui.signin_load.Position = UDim2.new(0.161616, 0, 0.598394, 0)
+    gui.signin_load.TextSize = 14
+    gui.signin_load.Size = UDim2.new(0, 274, 0, 31)
+    gui.signin_load.Name = "signin_load"
+    gui.signin_load.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    gui.signin_load.Text = "Load"
+    gui.signin_load.Active = true
+    gui.signin_load.Selectable = true
+    gui.signin_load.Parent = gui.Frame
+
+    gui.UICorner_1.Name = "UICorner"
+    gui.UICorner_1.Parent = gui.signin_load
+
+    gui.UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    gui.UIStroke.Name = "UIStroke"
+    gui.UIStroke.Thickness = 1.4
+    gui.UIStroke.Color = Color3.fromRGB(25, 25, 25)
+    gui.UIStroke.Parent = gui.signin_load
+
+    gui.TextLabel_2.BorderSizePixel = 0
+    gui.TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    gui.TextLabel_2.FontFace = Font.new("rbxassetid://11702779517", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    gui.TextLabel_2.TextSize = 15
+    gui.TextLabel_2.Position = UDim2.new(0.242424, 0, 0.334885, 0)
+    gui.TextLabel_2.Size = UDim2.new(0, 178, 0, 20)
+    gui.TextLabel_2.Name = "TextLabel"
+    gui.TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+    gui.TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    gui.TextLabel_2.Text = "The future of HvH in Roblox."
+    gui.TextLabel_2.BackgroundTransparency = 1
+    gui.TextLabel_2.Parent = gui.Frame
+
+    gui.fps_checkbox.BorderSizePixel = 0
+    gui.fps_checkbox.BackgroundColor3 = Color3.fromRGB(74, 74, 74)
+    gui.fps_checkbox.Size = UDim2.new(0, 25, 0, 25)
+    gui.fps_checkbox.Position = UDim2.new(0.0843434, 0, 0.817672, 0)
+    gui.fps_checkbox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    gui.fps_checkbox.Name = "fps_checkbox"
+    gui.fps_checkbox.Parent = gui.Frame
+
+    gui.UICorner_2.Name = "UICorner"
+    gui.UICorner_2.Parent = gui.Frame
+
+    gui.UICorner_3.Name = "UICorner"
+    gui.UICorner_3.Parent = gui.fps_checkbox
+
+    gui.UIStroke_1.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    gui.UIStroke_1.Name = "UIStroke"
+    gui.UIStroke_1.Thickness = 1.6
+    gui.UIStroke_1.Color = Color3.fromRGB(0, 0, 0)
+    gui.UIStroke_1.Parent = gui.Frame
+
+    gui.ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    gui.ImageLabel.ImageColor3 = Color3.fromRGB(255, 255, 255)
+    gui.ImageLabel.ImageRectOffset = Vector2.new(0, 0)
+    gui.ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+    gui.ImageLabel.ImageRectSize = Vector2.new(0, 0)
+    gui.ImageLabel.Size = UDim2.new(0, 25, 0, 25)
+    gui.ImageLabel.ImageTransparency = 0
+    gui.ImageLabel.BorderSizePixel = 0
+    gui.ImageLabel.Image = "rbxassetid://11897675803"
+    gui.ImageLabel.ImageColor3 = Color3.fromRGB(255, 255, 255)
+    gui.ImageLabel.Name = "ImageLabel"
+    gui.ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    gui.ImageLabel.BackgroundTransparency = 1
+    gui.ImageLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
+    gui.ImageLabel.Parent = gui.fps_checkbox
+
+    gui.fpscheckbox_button.BorderSizePixel = 0
+    gui.fpscheckbox_button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    gui.fpscheckbox_button.TextSize = 14
+    gui.fpscheckbox_button.TextTransparency = 1
+    gui.fpscheckbox_button.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    gui.fpscheckbox_button.Text = ""
+    gui.fpscheckbox_button.Size = UDim2.new(0, 25, 0, 25)
+    gui.fpscheckbox_button.Name = "fpscheckbox_button"
+    gui.fpscheckbox_button.Parent = gui.fps_checkbox
+    gui.fpscheckbox_button.Position = UDim2.new(0, 0, 0, 0)
+
+    gui.TextLabel_3.BorderSizePixel = 0
+    gui.TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    gui.TextLabel_3.FontFace = Font.new("rbxassetid://11702779517", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    gui.TextLabel_3.TextSize = 15
+    gui.TextLabel_3.Position = UDim2.new(0.1969706, 0, 0.817672, 0)
+    gui.TextLabel_3.Size = UDim2.new(0, 75, 0, 25)
+    gui.TextLabel_3.Name = "TextLabel"
+    gui.TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+    gui.TextLabel_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    gui.TextLabel_3.Text = "Load Beta?"
+    gui.TextLabel_3.BackgroundTransparency = 1
+    gui.TextLabel_3.Parent = gui.Frame
+
+    gui.UICorner_4.Name = "UICorner"
+    gui.UICorner_4.Parent = gui.TextLabel_3
+
+    gui.UIStroke_2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    gui.UIStroke_2.Name = "UIStroke"
+    gui.UIStroke_2.Thickness = 1.4
+    gui.UIStroke_2.Color = Color3.fromRGB(25, 25, 25)
+    gui.UIStroke_2.Parent = gui.signin_load
+
+    gui.UIStroke_3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    gui.UIStroke_3.Name = "UIStroke"
+    gui.UIStroke_3.Thickness = 1.6
+    gui.UIStroke_3.Color = Color3.fromRGB(0, 0, 0)
+    gui.UIStroke_3.Parent = gui.Frame
+
+    local completionMessage = Instance.new("TextLabel")
+    completionMessage.Name = "CompletionMessage"
+    completionMessage.Parent = gui.Frame
+    completionMessage.Size = UDim2.new(0, 396, 0, 50)
+    completionMessage.Position = UDim2.new(0.5, 0, 1.1, 0)
+    completionMessage.AnchorPoint = Vector2.new(0.5, 0.5)
+    completionMessage.BackgroundTransparency = 1
+    completionMessage.Text = "Loaded correctly!"
+    completionMessage.TextColor3 = Color3.fromRGB(0, 255, 0)
+    completionMessage.TextScaled = true
+    completionMessage.Font = Enum.Font.SourceSansBold
+    completionMessage.Visible = false
+
+    local function showCompletionMessage()
+        completionMessage.Visible = true
+        tweenGui(completionMessage, { Position = UDim2.new(0.5, 0, 0.8, 0) }, 0.5)
+        wait(2)
+        tweenGui(completionMessage, { Position = UDim2.new(0.5, 0, 1.1, 0) }, 0.5)
+    end
+
+    local function removeUI()
+        gui.blazedLoader:Destroy()
+        task.wait(1.7)
+    
+-- # all credits go to linemaster, ignore horrid source
+
+
+
+if (not LPH_OBFUSCATED) then
+    LPH_NO_VIRTUALIZE = function(...) return (...) end;
+    LPH_JIT_MAX = function(...) return (...) end;
+    LPH_JIT_ULTRA = function(...) return (...) end;
+end
+
+
 function load()
     --// Services
     local Players = game:GetService("Players")
@@ -2884,3 +3171,13 @@ function load()
 end
 
 load()
+    end
+
+    gui.signin_load.MouseButton1Click:Connect(function()
+        removeUI()
+    end)
+
+    showCompletionMessage()
+end
+
+task.wait(1)
